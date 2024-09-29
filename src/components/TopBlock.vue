@@ -39,6 +39,7 @@
 .topBlock {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
   margin: 0 50px 40px;
   padding: 20px 25px;
   background-image: url('@/assets/background1.png');
