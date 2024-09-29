@@ -7,13 +7,39 @@ import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 
 const auth = ref(false)
+const isEnterOpen = ref(false)
+const isRegisterOpen = ref(false)
+
+const openEnter = () => {
+  isEnterOpen.value = true
+}
+
+const closeEnter = () => {
+  isEnterOpen.value = false
+}
+
+const openRegister = () => {
+  isRegisterOpen.value = true
+}
+
+const closeRegister = () => {
+  isRegisterOpen.value = false
+}
 </script>
 
 <template>
   <div class="app">
-    <Header :auth="auth" />
+    <Header :auth="auth" @openEnter="openEnter" />
     <main>
-      <RouterView :auth="auth"></RouterView>
+      <RouterView
+        :auth="auth"
+        :isEnterOpen="isEnterOpen"
+        @openEnter="openEnter"
+        @closeEnter="closeEnter"
+        @openRegister="openRegister"
+        @closeRegister="closeRegister"
+        :isRegisterOpen="isRegisterOpen"
+      ></RouterView>
     </main>
   </div>
 
@@ -21,14 +47,9 @@ const auth = ref(false)
 </template>
 
 <style scoped lang="scss">
-.app{
+.app {
   max-width: 1300px;
-  // min-height: 100vh;
   margin: 0 auto;
-  /* padding: 2rem; */
   font-weight: normal;
-  // display: flex;
-  // flex-direction: column;
-
 }
 </style>

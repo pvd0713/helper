@@ -1,7 +1,8 @@
 <script setup>
+const emit = defineEmits(['openEnter'])
 
 defineProps({
-    auth: Boolean
+  auth: Boolean
 })
 </script>
 
@@ -37,7 +38,7 @@ defineProps({
         <p class="rightBlock__user__text">Иванов И.</p>
         <button class="rightBlock__user__card">Личная карточка</button>
       </div>
-      <div v-else class="rightBlock__button">Вход</div>
+      <div v-else class="rightBlock__button" @click="emit('openEnter')">Вход</div>
     </div>
 
     <!-- <div class="wrapper">
