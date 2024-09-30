@@ -1,39 +1,121 @@
 <script setup>
-const emit = defineEmits(['openEnter', 'closeRegister'])
+import { ref } from 'vue'
 
-const openEnter = () => {
-  emit('closeRegister')
-  emit('openEnter')
-}
+const emit = defineEmits(['closeRegister'])
+
+const surname = ref('')
+const name = ref('')
+const phone = ref('')
+const email = ref('')
+const userType = ref('')
+const selerType = ref('')
+const password = ref('')
+const passwordRepeat = ref('')
 </script>
 
 <template>
-  <div class="register" @click="emit('closeRegister')"></div>
-  <div class="registerBlock">
-    <p class="registerBlock__title">Регистрация</p>
-    <div class="registerBlock__block">
-      <p class="registerBlock__block__text">Логин</p>
+  <div class="enter" @click="emit('closeRegister')"></div>
+  <div class="enterBlock">
+    <p class="enterBlock__title">Регистрация</p>
+
+    <div class="enterBlock__block">
+      <p class="enterBlock__block__text">Фамилия</p>
       <input
-        class="registerBlock__block__input"
+        class="enterBlock__block__input"
         type="text"
-        placeholder="Логин"
-        name="login"
-        id="login"
+        placeholder="Иванов"
+        name="surname"
+        id="surname"
+        v-model="surname"
       />
     </div>
-    <div class="registerBlock__block">
-      <p class="registerBlock__block__text">Пароль</p>
-      <input class="registerBlock__block__input" type="password" />
+
+    <div class="enterBlock__block">
+      <p class="enterBlock__block__text">Имя</p>
+      <input
+        class="enterBlock__block__input"
+        type="text"
+        placeholder="Иван"
+        name="name"
+        id="name"
+        v-model="name"
+      />
     </div>
-    <button class="registerBlock__block__button">Зарегистрироваться</button>
-    <div class="registerBlock__block__footer">
-      <p class="registerBlock__block__link" @click="openEnter">Вход</p>
+
+    <div class="enterBlock__block">
+      <p class="enterBlock__block__text">Телефон</p>
+      <input
+        class="enterBlock__block__input"
+        type="phone"
+        placeholder="+7 999 888 77 66"
+        name="phone"
+        id="phone"
+        v-model="phone"
+      />
     </div>
+
+    <div class="enterBlock__block">
+      <p class="enterBlock__block__text">e-mail</p>
+      <input
+        class="enterBlock__block__input"
+        type="email"
+        placeholder="ghjl@mail.ru"
+        name="email"
+        id="logemailin"
+        v-model="email"
+      />
+    </div>
+
+    <div class="enterBlock__block">
+      <p class="enterBlock__block__text">Пользователь</p>
+      <input
+        class="enterBlock__block__input enterBlock__block__checkbox"
+        type="checkbox"
+        placeholder="e-mail"
+        name="userType"
+        id="userType"
+        v-model="userType"
+      />
+    </div>
+
+    <div class="enterBlock__block">
+      <p class="enterBlock__block__text">Продавец</p>
+      <input
+        class="enterBlock__block__input enterBlock__block__checkbox"
+        type="checkbox"
+        placeholder="e-mail"
+        name="selerType"
+        id="selerType"
+        v-model="selerType"
+      />
+    </div>
+
+    <div class="enterBlock__block">
+      <p class="enterBlock__block__text">Пароль</p>
+      <input
+        class="enterBlock__block__input"
+        type="password"
+        placeholder="password"
+        v-model="password"
+      />
+    </div>
+
+    <div class="enterBlock__block">
+      <p class="enterBlock__block__text">Повторите пароль</p>
+      <input
+        class="enterBlock__block__input"
+        type="password"
+        placeholder="password"
+        v-model="passwordRepeat"
+      />
+    </div>
+
+    <button class="enterBlock__block__button">Зарегистрироваться</button>
   </div>
 </template>
 
 <style scoped lang="scss">
-.register {
+.enter {
   height: 100%;
   width: 100%;
   background-color: #000;
@@ -44,13 +126,13 @@ const openEnter = () => {
   z-index: 1;
 }
 
-.registerBlock {
-  height: 434px;
-  width: 498px;
+.enterBlock {
+  height: 850px;
+  width: 721px;
   background-color: #fff;
   border-radius: 8px;
   position: fixed;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
@@ -63,55 +145,94 @@ const openEnter = () => {
     font-weight: 700;
     font-size: 30px;
     line-height: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    margin-top: 40px;
   }
 
   &__block {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
     width: 100%;
     margin-bottom: 20px;
+    padding: 0 40px;
 
     &__text {
+      width: 223px;
       font-weight: 400;
-      font-size: 16px;
-      line-height: 16px;
+      font-size: 20px;
+      line-height: 20px;
+      padding-left: 20px;
+      text-align: left;
+      white-space: nowrap;
     }
 
     &__input {
-      width: 100%;
-      height: 40px;
-      border-radius: 8px;
+      width: 418px;
+      height: 60px;
       border: 1px solid #dedede;
-      padding-left: 10px;
+      border-radius: 8px;
+      padding: 20px;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 20px;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 20px;
+        color: #999;
+      }
+    }
+
+    &__checkbox {
+      //   width: 418px;
+      //   height: 60px;
+      //   border: 1px solid #dedede;
+      //   border-radius: 8px;
+      //   position: absolute;
+      //   z-index: -1;
+      //   opacity: 0;
+      display: inline-flex;
+      align-items: center;
+      user-select: none;
     }
 
     &__button {
-      width: 100%;
+      width: 337px;
       height: 40px;
+      background: #ffbf4b;
       border-radius: 8px;
-      border: 1px solid #dedede;
-      padding-left: 10px;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 20px;
+      color: #fff;
+      border: none;
+      margin-bottom: 40px;
       margin-top: 20px;
+      cursor: pointer;
     }
 
     &__footer {
       width: 100%;
+      padding: 0 40px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 20px;
+      gap: 10px;
+      margin-bottom: 10px;
+      justify-content: space-between;
     }
 
     &__link {
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 16px;
-      color: #ffbf4b;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 14px;
       cursor: pointer;
+      color: #999;
     }
   }
 }

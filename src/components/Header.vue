@@ -9,7 +9,9 @@ defineProps({
 <template>
   <header>
     <div class="leftBlock">
-      <img alt="Vue logo" class="leftBlock__logo" src="@/assets/logo.svg" width="170" />
+      <RouterLink to="/">
+        <img alt="Vue logo" class="leftBlock__logo" src="@/assets/logo.svg" width="170" />
+      </RouterLink>
       <p class="leftBlock__text">Invest planner</p>
     </div>
     <div class="rightBlock">

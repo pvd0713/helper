@@ -1,10 +1,17 @@
 <script setup>
+import { ref } from 'vue'
+
 const emit = defineEmits(['closeEnter', 'openRegister'])
 
 const openRegister = () => {
   emit('closeEnter')
   emit('openRegister')
 }
+
+const login = ref('')
+const password = ref('')
+
+
 </script>
 
 <template>
@@ -15,20 +22,21 @@ const openRegister = () => {
       <p class="enterBlock__block__text">Логин</p>
       <input
         class="enterBlock__block__input"
-        type="text"
-        placeholder="Логин"
+        type="email"
+        placeholder="e-mail"
         name="login"
         id="login"
+        v-model="login"
       />
     </div>
     <div class="enterBlock__block">
       <p class="enterBlock__block__text">Пароль</p>
-      <input class="enterBlock__block__input" type="password" />
+      <input class="enterBlock__block__input" type="password" placeholder="password" v-model="password" />
     </div>
     <button class="enterBlock__block__button">Войти</button>
     <div class="enterBlock__block__footer">
       <p class="enterBlock__block__link">Забыли пароль?</p>
-      <p class="enterBlock__block__link" @click="openRegister">Регистрация</p>
+      <p class="enterBlock__block__link" @click="openRegister">Зарегистрироваться</p>
     </div>
   </div>
 </template>
@@ -77,28 +85,44 @@ const openRegister = () => {
     margin-bottom: 20px;
 
     &__text {
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 16px;
-      margin-left: 20px;
+      width: 100%;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 20px;
+      padding-left: 40px;
+      text-align: left;
     }
 
     &__input {
-      width: calc(100% - 40px);
-      height: 30px;
+      width: calc(100% - 80px);
+      height: 60px;
       border: 1px solid #dedede;
       border-radius: 8px;
-      padding-left: 20px;
+      padding: 20px;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 20px;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 20px;
+        color: #999;
+      }
     }
 
     &__button {
-      width: calc(100% - 40px);
-      height: 30px;
+      width: calc(100% - 80px);
+      height: 40px;
       background: #ffbf4b;
       border-radius: 8px;
       font-weight: 700;
-      font-size: 16px;
-      line-height: 16px;
+      font-size: 20px;
+      line-height: 20px;
       color: #fff;
       border: none;
       margin-bottom: 10px;
@@ -106,16 +130,20 @@ const openRegister = () => {
     }
 
     &__footer {
+      width: 100%;
+      padding: 0 40px;
       display: flex;
       gap: 10px;
       margin-bottom: 10px;
+      justify-content: space-between;
     }
 
     &__link {
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 16px;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 14px;
       cursor: pointer;
+      color: #999;
     }
   }
 }
