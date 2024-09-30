@@ -1,11 +1,14 @@
 <script setup>
-import Catalog from './Catalog.vue'
+import CatalogButton from './CatalogButton.vue'
 import Search from './Search.vue'
+
+const emit = defineEmits(['openCatalogOpen'])
+
 </script>
 
 <template>
   <div class="catalogSearch">
-    <Catalog />
+    <CatalogButton @openCatalogOpen="emit('openCatalogOpen')" />
     <Search />
   </div>
 </template>

@@ -11,6 +11,10 @@ const userType = ref('')
 const selerType = ref('')
 const password = ref('')
 const passwordRepeat = ref('')
+
+function sendForm() {
+    emit('closeRegister')   
+}
 </script>
 
 <template>
@@ -67,7 +71,6 @@ const passwordRepeat = ref('')
     </div>
 
     <div class="enterBlock__block">
-      <p class="enterBlock__block__text">Пользователь</p>
       <input
         class="enterBlock__block__input enterBlock__block__checkbox"
         type="checkbox"
@@ -76,10 +79,10 @@ const passwordRepeat = ref('')
         id="userType"
         v-model="userType"
       />
+      <label for="userType" class="enterBlock__block__text">Пользователь</label>
     </div>
 
     <div class="enterBlock__block">
-      <p class="enterBlock__block__text">Продавец</p>
       <input
         class="enterBlock__block__input enterBlock__block__checkbox"
         type="checkbox"
@@ -88,6 +91,7 @@ const passwordRepeat = ref('')
         id="selerType"
         v-model="selerType"
       />
+      <label for="selerType" class="enterBlock__block__text">Продавец</label>
     </div>
 
     <div class="enterBlock__block">
@@ -110,7 +114,7 @@ const passwordRepeat = ref('')
       />
     </div>
 
-    <button class="enterBlock__block__button">Зарегистрироваться</button>
+    <button class="enterBlock__block__button" @click="sendForm">Зарегистрироваться</button>
   </div>
 </template>
 
@@ -152,7 +156,6 @@ const passwordRepeat = ref('')
   &__block {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 10px;
     width: 100%;
     margin-bottom: 20px;
@@ -166,6 +169,7 @@ const passwordRepeat = ref('')
       padding-left: 20px;
       text-align: left;
       white-space: nowrap;
+      user-select: none;
     }
 
     &__input {
@@ -191,16 +195,31 @@ const passwordRepeat = ref('')
     }
 
     &__checkbox {
-      //   width: 418px;
-      //   height: 60px;
-      //   border: 1px solid #dedede;
-      //   border-radius: 8px;
-      //   position: absolute;
-      //   z-index: -1;
-      //   opacity: 0;
-      display: inline-flex;
+      display: none;
+    }
+
+    &__checkbox + label {
+      position: relative;
+      height: 60px;
+      display: flex;
       align-items: center;
-      user-select: none;
+      color: #000;
+    }
+
+    &__checkbox + label:before {
+      content: '';
+      position: absolute;
+      left: 228px;
+      top: 0;
+      width: 60px;
+      height: 60px;
+      border: 1px solid #dedede;
+      border-radius: 8px;
+    }
+
+    &__checkbox:checked + label::before {
+      background-image: url('@/assets/check.svg');
+      background-size: contain;
     }
 
     &__button {

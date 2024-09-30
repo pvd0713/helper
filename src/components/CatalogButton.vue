@@ -1,9 +1,9 @@
 <script setup>
-
+ const emit = defineEmits(['openCatalogOpen'])
 </script>
 
 <template>
-<div class="catalog">
+<div class="catalog" @click="emit('openCatalogOpen')">
     <p class="catalog__text">Каталог</p>
     <img src="@/assets/catalog.svg" alt="" class="catalog__img">
 

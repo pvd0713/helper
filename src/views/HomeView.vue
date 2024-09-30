@@ -7,6 +7,8 @@ import PopularBlock from '@/components/PopularBlock.vue'
 import RecommendedBlock from '@/components/RecommendedBlock.vue'
 import Enter from '@/components/Enter.vue'
 import Register from '@/components/Register.vue'
+import CatalogModal from '@/components/CatalogModal.vue'
+import { ref } from 'vue'
 
 defineProps({
   auth: Boolean,
@@ -14,13 +16,24 @@ defineProps({
   isRegisterOpen: Boolean
 })
 
+const isCatalogOpen = ref(false)
+
+const openCatalogOpen = () => {
+    isCatalogOpen.value = true;
+};
+
+const closeCatalogOpen = () => {
+    isCatalogOpen.value = false;
+};
+
+
 const emit = defineEmits(['openEnter', 'closeEnter', 'openRegister', 'c'])
 </script>
 
 <template>
-  <main>
+
     <UnderHeader :auth="auth" />
-    <CatalogSearch />
+    <CatalogSearch @openCatalogOpen="openCatalogOpen" />
     <TopBlock />
     <SpecialBlock />
     <PopularBlock />
@@ -35,7 +48,8 @@ const emit = defineEmits(['openEnter', 'closeEnter', 'openRegister', 'c'])
       @closeRegister="emit('closeRegister')"
       @openEnter="emit('openEnter')"
     />
-  </main>
+    <CatalogModal v-if="isCatalogOpen" @closeCatalogOpen="closeCatalogOpen" />
+
 </template>
 
 <style scoped lang="scss"></style>

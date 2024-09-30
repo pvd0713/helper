@@ -5,5 +5,7 @@
 </template>
 
 <style>
-
+.about {
+  padding: 0 50px;
+}
 </style>

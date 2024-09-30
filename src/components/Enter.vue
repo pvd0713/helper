@@ -11,7 +11,9 @@ const openRegister = () => {
 const login = ref('')
 const password = ref('')
 
-
+const sendForm = () => {
+  emit('closeEnter')
+}
 </script>
 
 <template>
@@ -31,9 +33,14 @@ const password = ref('')
     </div>
     <div class="enterBlock__block">
       <p class="enterBlock__block__text">Пароль</p>
-      <input class="enterBlock__block__input" type="password" placeholder="password" v-model="password" />
+      <input
+        class="enterBlock__block__input"
+        type="password"
+        placeholder="password"
+        v-model="password"
+      />
     </div>
-    <button class="enterBlock__block__button">Войти</button>
+    <button class="enterBlock__block__button" @click="sendForm">Войти</button>
     <div class="enterBlock__block__footer">
       <p class="enterBlock__block__link">Забыли пароль?</p>
       <p class="enterBlock__block__link" @click="openRegister">Зарегистрироваться</p>
