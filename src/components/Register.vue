@@ -73,11 +73,11 @@ function sendForm() {
     <div class="enterBlock__block">
       <input
         class="enterBlock__block__input enterBlock__block__checkbox"
-        type="checkbox"
+        type="radio"
         placeholder="e-mail"
         name="userType"
         id="userType"
-        v-model="userType"
+
       />
       <label for="userType" class="enterBlock__block__text">Пользователь</label>
     </div>
@@ -85,11 +85,11 @@ function sendForm() {
     <div class="enterBlock__block">
       <input
         class="enterBlock__block__input enterBlock__block__checkbox"
-        type="checkbox"
+        type="radio"
         placeholder="e-mail"
-        name="selerType"
+        name="userType"
         id="selerType"
-        v-model="selerType"
+
       />
       <label for="selerType" class="enterBlock__block__text">Продавец</label>
     </div>
