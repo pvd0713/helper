@@ -8,7 +8,7 @@ const name = ref('')
 const phone = ref('')
 const email = ref('')
 const userType = ref('')
-const selerType = ref('')
+// const selerType = ref('')
 const password = ref('')
 const passwordRepeat = ref('')
 
@@ -74,10 +74,10 @@ function sendForm() {
       <input
         class="enterBlock__block__input enterBlock__block__checkbox"
         type="radio"
-        placeholder="e-mail"
         name="userType"
         id="userType"
-
+        value="typeUser"
+        v-model="userType"
       />
       <label for="userType" class="enterBlock__block__text">Пользователь</label>
     </div>
@@ -86,10 +86,10 @@ function sendForm() {
       <input
         class="enterBlock__block__input enterBlock__block__checkbox"
         type="radio"
-        placeholder="e-mail"
         name="userType"
         id="selerType"
-
+        value="typeSeler"
+        v-model="userType"
       />
       <label for="selerType" class="enterBlock__block__text">Продавец</label>
     </div>
